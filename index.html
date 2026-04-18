@@ -519,6 +519,14 @@
             gap: 12px;
         }
 
+        .quick-actions.with-dressup {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .quick-actions.with-dressup .quick-action-card:last-child {
+            grid-column: span 2;
+        }
+
         .quick-action-card {
             background: var(--card-bg);
             border-radius: var(--radius-medium);
@@ -748,6 +756,296 @@
             color: var(--text-muted);
         }
 
+        /* Dress Up Page */
+        .dressup-page {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-white);
+            z-index: 2000;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        .dressup-page.active {
+            display: block;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .dressup-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: var(--primary-orange);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            z-index: 100;
+        }
+
+        .dressup-header-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .dressup-close {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .dressup-content {
+            padding-top: 56px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dressup-preview {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: linear-gradient(180deg, var(--primary-orange-light) 0%, var(--bg-white) 100%);
+        }
+
+        .dressup-pet-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        .dressup-pet {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FFE4D6 0%, #FFD4C0 50%, #FFC4AA 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 100px;
+            box-shadow: 0 8px 32px rgba(255, 140, 66, 0.25);
+            position: relative;
+        }
+
+        .dressup-pet-outfit {
+            position: absolute;
+            font-size: 60px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .dressup-pet-accessory {
+            position: absolute;
+            font-size: 40px;
+            top: 10px;
+            right: 10px;
+        }
+
+        .dressup-bonus-badge {
+            margin-top: 16px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .dressup-categories {
+            background: var(--card-bg);
+            border-radius: var(--radius-large) var(--radius-large) 0 0;
+            padding: 20px;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .dressup-category-tabs {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+            scrollbar-width: none;
+        }
+
+        .dressup-category-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .dressup-tab {
+            flex-shrink: 0;
+            padding: 10px 20px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            background: var(--bg-white);
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .dressup-tab.active {
+            background: var(--primary-orange);
+            color: white;
+        }
+
+        .dressup-items {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            scrollbar-width: none;
+        }
+
+        .dressup-items::-webkit-scrollbar {
+            display: none;
+        }
+
+        .dressup-item {
+            flex-shrink: 0;
+            width: 90px;
+            height: 110px;
+            background: var(--bg-white);
+            border-radius: var(--radius-medium);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .dressup-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .dressup-item.active {
+            border-color: var(--primary-orange);
+            background: var(--primary-orange-light);
+        }
+
+        .dressup-item-locked {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .dressup-item-vip {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        .dressup-item-icon {
+            font-size: 40px;
+            margin-bottom: 4px;
+        }
+
+        .dressup-item-name {
+            font-size: 11px;
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 0 4px;
+        }
+
+        .dressup-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .dressup-btn {
+            flex: 1;
+            padding: 14px;
+            border-radius: 28px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .dressup-btn-secondary {
+            background: var(--bg-white);
+            color: var(--text-primary);
+            border: 1px solid #E0E0E0;
+        }
+
+        .dressup-btn-primary {
+            background: var(--primary-orange);
+            color: white;
+        }
+
+        .dressup-btn-primary:hover {
+            background: var(--primary-orange-dark);
+        }
+
+        .dressup-vip-banner {
+            background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+            color: white;
+            padding: 12px 16px;
+            border-radius: var(--radius-medium);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .dressup-vip-text {
+            font-size: 13px;
+        }
+
+        .dressup-vip-text strong {
+            color: #FFD700;
+        }
+
+        .dressup-vip-btn {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
         /* Toast Notification */
         .toast {
             position: fixed;
@@ -871,7 +1169,7 @@
                         <div class="ai-mood">Mood: Happy ✨</div>
                     </div>
 
-                    <div class="quick-actions">
+                    <div class="quick-actions with-dressup">
                         <div class="quick-action-card" onclick="showToast('Chat with AI Buddy')">
                             <div class="quick-action-icon orange">💬</div>
                             <div class="quick-action-title">AI Chat</div>
@@ -891,6 +1189,11 @@
                             <div class="quick-action-icon purple">📸</div>
                             <div class="quick-action-title">Memories</div>
                             <div class="quick-action-desc">View photos</div>
+                        </div>
+                        <div class="quick-action-card" onclick="openDressUp()">
+                            <div class="quick-action-icon" style="background: linear-gradient(135deg, #FFE4E1 0%, #FFF0F5 100%);">👔</div>
+                            <div class="quick-action-title">Pet Dress Up</div>
+                            <div class="quick-action-desc">Style your AI buddy</div>
                         </div>
                     </div>
                 </div>
@@ -983,6 +1286,57 @@
             </button>
         </nav>
 
+        <!-- Dress Up Page -->
+        <div class="dressup-page" id="dressupPage">
+            <div class="dressup-header">
+                <div class="dressup-close" onclick="closeDressUp()">✕</div>
+                <div class="dressup-header-title">Pet Dress Up</div>
+                <div style="width: 40px;"></div>
+            </div>
+            <div class="dressup-content">
+                <div class="dressup-preview">
+                    <div class="dressup-pet-container">
+                        <div class="dressup-pet" id="dressupPet">🐕
+                            <div class="dressup-pet-outfit" id="petOutfit"></div>
+                            <div class="dressup-pet-accessory" id="petAccessory"></div>
+                        </div>
+                    </div>
+                    <div class="dressup-bonus-badge" id="bonusBadge" style="display: none;">
+                        <span>⚡</span>
+                        <span>Adventure Bonus Active</span>
+                    </div>
+                </div>
+                <div class="dressup-categories">
+                    <!-- VIP Banner -->
+                    <div class="dressup-vip-banner">
+                        <div class="dressup-vip-text">
+                            <strong>👑 VIP Member</strong> unlocks exclusive outfits
+                        </div>
+                        <button class="dressup-vip-btn">Upgrade</button>
+                    </div>
+
+                    <!-- Category Tabs -->
+                    <div class="dressup-category-tabs">
+                        <button class="dressup-tab active" onclick="switchDressUpTab('casual', this)">Casual</button>
+                        <button class="dressup-tab" onclick="switchDressUpTab('adventure', this)">Adventure</button>
+                        <button class="dressup-tab" onclick="switchDressUpTab('festival', this)">Festival</button>
+                        <button class="dressup-tab" onclick="switchDressUpTab('rare', this)">Rare</button>
+                    </div>
+
+                    <!-- Items -->
+                    <div class="dressup-items" id="dressupItems">
+                        <!-- Items will be populated by JS -->
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="dressup-actions">
+                        <button class="dressup-btn dressup-btn-secondary" onclick="closeDressUp()">Cancel</button>
+                        <button class="dressup-btn dressup-btn-primary" onclick="saveOutfit()">Save & Wear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Toast -->
         <div class="toast" id="toast"></div>
     </div>
@@ -1041,6 +1395,140 @@
                 };
                 reader.readAsDataURL(file);
             }
+        }
+
+        // Dress Up Data
+        const dressUpItems = {
+            casual: [
+                { id: 'c1', icon: '🧢', name: 'Cool Cap', unlocked: true },
+                { id: 'c2', icon: '🕶️', name: 'Sunglasses', unlocked: true },
+                { id: 'c3', icon: '🧣', name: 'Cozy Scarf', unlocked: true },
+                { id: 'c4', icon: '👟', name: 'Sneakers', unlocked: false },
+                { id: 'c5', icon: '🎒', name: 'Mini Backpack', unlocked: false, vip: true }
+            ],
+            adventure: [
+                { id: 'a1', icon: '🏕️', name: 'Camper Hat', unlocked: true, bonus: true },
+                { id: 'a2', icon: '🥾', name: 'Hiking Boots', unlocked: true, bonus: true },
+                { id: 'a3', icon: '🧭', name: 'Explorer Pack', unlocked: false, bonus: true },
+                { id: 'a4', icon: '⛺', name: 'Trail Gear', unlocked: false, vip: true, bonus: true },
+                { id: 'a5', icon: '🔦', name: 'Night Light', unlocked: false, vip: true, bonus: true }
+            ],
+            festival: [
+                { id: 'f1', icon: '🎄', name: 'Holiday Hat', unlocked: false },
+                { id: 'f2', icon: '🎃', name: 'Pumpkin Costume', unlocked: false },
+                { id: 'f3', icon: '🎆', name: 'Party Crown', unlocked: false, vip: true },
+                { id: 'f4', icon: '🎊', name: 'Celebration', unlocked: false, vip: true },
+                { id: 'f5', icon: '🎀', name: 'Festive Bow', unlocked: false }
+            ],
+            rare: [
+                { id: 'r1', icon: '👑', name: 'Royal Crown', unlocked: false, vip: true },
+                { id: 'r2', icon: '💎', name: 'Diamond Collar', unlocked: false, vip: true },
+                { id: 'r3', icon: '🦄', name: 'Mystic Horn', unlocked: false, vip: true },
+                { id: 'r4', icon: '🌟', name: 'Star Cape', unlocked: false, vip: true },
+                { id: 'r5', icon: '🔮', name: 'Crystal Ball', unlocked: false, vip: true }
+            ]
+        };
+
+        let currentOutfit = '';
+        let currentAccessory = '';
+        let selectedItem = null;
+
+        // Open Dress Up Page
+        function openDressUp() {
+            document.getElementById('dressupPage').classList.add('active');
+            renderDressUpItems('casual');
+        }
+
+        // Close Dress Up Page
+        function closeDressUp() {
+            document.getElementById('dressupPage').classList.remove('active');
+            // Reset preview to saved outfit
+            document.getElementById('petOutfit').textContent = currentOutfit;
+            document.getElementById('petAccessory').textContent = currentAccessory;
+            updateBonusBadge();
+        }
+
+        // Switch Dress Up Tab
+        function switchDressUpTab(category, btn) {
+            document.querySelectorAll('.dressup-tab').forEach(tab => tab.classList.remove('active'));
+            btn.classList.add('active');
+            renderDressUpItems(category);
+        }
+
+        // Render Dress Up Items
+        function renderDressUpItems(category) {
+            const container = document.getElementById('dressupItems');
+            const items = dressUpItems[category];
+            
+            container.innerHTML = items.map(item => `
+                <div class="dressup-item ${selectedItem === item.id ? 'active' : ''} ${!item.unlocked ? 'locked' : ''}" 
+                     onclick="selectItem('${item.id}', '${item.icon}', ${item.unlocked}, ${item.bonus || false})">
+                    ${!item.unlocked ? '<span class="dressup-item-locked">🔒</span>' : ''}
+                    ${item.vip ? '<span class="dressup-item-vip">VIP</span>' : ''}
+                    <div class="dressup-item-icon">${item.icon}</div>
+                    <div class="dressup-item-name">${item.name}</div>
+                </div>
+            `).join('');
+        }
+
+        // Select Item
+        function selectItem(id, icon, unlocked, hasBonus) {
+            if (!unlocked) {
+                showToast('Complete daily quests to unlock!');
+                return;
+            }
+            
+            selectedItem = id;
+            currentOutfit = icon;
+            
+            // Update preview
+            document.getElementById('petOutfit').textContent = icon;
+            
+            // Update bonus badge
+            if (hasBonus) {
+                document.getElementById('bonusBadge').style.display = 'flex';
+            } else {
+                document.getElementById('bonusBadge').style.display = 'none';
+            }
+            
+            // Update selection UI
+            document.querySelectorAll('.dressup-item').forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+
+        // Update Bonus Badge
+        function updateBonusBadge() {
+            const hasAdventureOutfit = ['🏕️', '🥾', '🧭', '⛺', '🔦'].includes(currentOutfit);
+            document.getElementById('bonusBadge').style.display = hasAdventureOutfit ? 'flex' : 'none';
+        }
+
+        // Save Outfit
+        function saveOutfit() {
+            if (!selectedItem) {
+                showToast('Select an outfit first!');
+                return;
+            }
+            
+            // Update main page AI avatar
+            const mainAvatar = document.querySelector('.ai-avatar');
+            if (mainAvatar) {
+                mainAvatar.innerHTML = `🐕<div style="position: absolute; font-size: 50px;">${currentOutfit}</div>`;
+            }
+            
+            // Show success message with AI response
+            const responses = [
+                'I love my new look! 🎉',
+                'This outfit is perfect! ✨',
+                'I feel so stylish! 💫',
+                'Ready for adventure! 🚀',
+                'Thanks for dressing me up! 💕'
+            ];
+            const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+            
+            closeDressUp();
+            setTimeout(() => {
+                showToast(randomResponse);
+            }, 300);
         }
 
         // Initialize
